@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hazel 作品集 — 字体 / 海报 / 品牌 / 版式">
+  <meta property="og:title" content="Hazel · Portfolio">
+  <meta property="og:description" content="留白与复古未来的设计实验场">
+  <meta property="og:type" content="website">
+  <meta name="author" content="Hazel">
+  <title>Hazel · Portfolio</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23FFFFFF'/><path d='M20 18h6v11h12V18h6v28h-6V34H26v12h-6V18z' fill='%239B0000'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-cursor-style="default">
+
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Loading screen -->
+  <div id="loader">
+    <div class="inner-loader">
+      <span class="logo-text">Hazel.</span>
+      <div class="number-wrapper">
+        <span class="val" id="loading-progress">0</span> %
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-wrapper" id="wrapper-cursor">
+    <div class="cursor-dot"></div>
+  </div>
+
+  <!-- Noise -->
+  <canvas class="noise-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===== HEADER ===== -->
+  <header id="header">
+    <a href="#" class="logo" data-cursor-style="small">Hazel.</a>
+    <nav class="nav-visible">
+      <a href="#about" data-cursor-style="small">About</a>
+      <a href="#works" data-cursor-style="small">Works</a>
+      <a href="#inspiration" data-cursor-style="small">Inspiration</a>
+      <a href="#footer" data-cursor-style="small">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="hero" id="hero">
+      <span class="hero__logo-text font-2" style="font-size:var(--fs-210)">Hazel.</span>
+      <span class="hero__subtitle font-1 fw-700" style="font-size:var(--fs-47)">视觉设计<br>作品集</span>
+      <span class="hero__scroll">Scroll</span>
+
+      <div class="gallery-row">
+        <div class="gallery-wrapper">
+          <a href="#works" class="project-card" data-cursor-style="view">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/poster-视界之外-01.jpg" alt="视界之外" loading="lazy">
+            </div>
+          </a>
+          <a href="#works" class="project-card" data-cursor-style="view">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/brand-热点商店-01.jpg" alt="热点商店" loading="lazy">
+            </div>
+          </a>
+          <a href="#works" class="project-card" data-cursor-style="view">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/material-华晨宇创意物料-01.jpg" alt="华晨宇" loading="lazy">
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== ABOUT ====== -->
+    <section class="about" id="about">
+      <span class="about__bg-text" aria-hidden="true">H</span>
+
+      <span class="about__section-label">about us</span>
+
+      <p class="about__body split-words" id="about-paragraph">
+        <span class="contrast">Hazel</span>是一个专注于字体设计、海报创作与品牌视觉的创造者。他相信设计的本质不是装饰，而是找到事物之间最恰切的关系——文字与留白、秩序与意外。
+      </p>
+
+      <div class="about__content-row">
+        <div class="about__philosophy">
+          <span class="about__section-label" style="text-align:left;font-size:var(--fs-16)">Philosophy</span>
+          <div class="about__phil-item">
+            <span class="about__phil-tag">01</span>
+            <span class="about__phil-text">文字是活的——每一个笔画都在呼吸</span>
+          </div>
+          <div class="about__phil-item">
+            <span class="about__phil-tag">02</span>
+            <span class="about__phil-text">好的设计在沉默中发出声音</span>
+          </div>
+          <div class="about__phil-item">
+            <span class="about__phil-tag">03</span>
+            <span class="about__phil-text">拒绝套路——每一次都是第一次</span>
+          </div>
+        </div>
+        <div>
+          <span class="about__section-label" style="text-align:left;font-size:var(--fs-16)">Skills</span>
+          <div class="about__tags">
+            <span class="about__tag">字体设计</span>
+            <span class="about__tag">海报设计</span>
+            <span class="about__tag">品牌视觉</span>
+            <span class="about__tag">版式编排</span>
+            <span class="about__tag">动态图形</span>
+            <span class="about__tag">插画</span>
+            <span class="about__tag">印刷工艺</span>
+            <span class="about__tag">AI协同创作</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WORKS ====== -->
+    <section class="works" id="works">
+      <span class="works__section-label">projects</span>
+
+      <!-- Category buttons -->
+      <div class="works__categories">
+        <button class="works__cat works__cat--active" data-cat="all">all projects</button>
+        <button class="works__cat" data-cat="poster">poster 海报</button>
+        <button class="works__cat" data-cat="brand">brand 品牌</button>
+        <button class="works__cat" data-cat="material">material 应用</button>
+        <button class="works__cat" data-cat="typeface">typeface 字体</button>
+      </div>
+
+      <!-- Category title -->
+      <div class="category-title active-category" data-cat-title="all">
+        todos los proyectos
+        <span class="projects-quantity">21</span>
+      </div>
+      <div class="category-title" data-cat-title="poster">
+        poster
+        <span class="projects-quantity">5</span>
+      </div>
+      <div class="category-title" data-cat-title="brand">
+        brand
+        <span class="projects-quantity">6</span>
+      </div>
+      <div class="category-title" data-cat-title="material">
+        material
+        <span class="projects-quantity">5</span>
+      </div>
+      <div class="category-title" data-cat-title="typeface">
+        typeface
+        <span class="projects-quantity">5</span>
+      </div>
+
+      <!-- Accordion project list -->
+      <ul class="project-list">
+
+        <!-- 海报 · 01 国庆2026主视觉海报 -->
+        <li class="project-item" data-category="poster">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">国庆2026主视觉海报</div>
+            <div class="project-category-tag">Poster</div>
+            <div class="project-year">2026</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/poster-国庆2026主视觉海报-01.jpg" alt="国庆2026">
+            </div>
+          </div>
+        </li>
+
+        <!-- 海报 · 02 跨越！2026 -->
+        <li class="project-item" data-category="poster">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">跨越！2026</div>
+            <div class="project-category-tag">Poster</div>
+            <div class="project-year">2026</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/poster-跨越！2026-01.jpg" alt="跨越2026">
+            </div>
+          </div>
+        </li>
+
+        <!-- 海报 · 03 视界之外 -->
+        <li class="project-item" data-category="poster">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">视界之外</div>
+            <div class="project-category-tag">Poster</div>
+            <div class="project-year">2026</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/poster-视界之外-01.jpg" alt="视界之外">
+            </div>
+          </div>
+        </li>
+
+        <!-- 海报 · 04 信号接收中 -->
+        <li class="project-item" data-category="poster">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">信号接收中</div>
+            <div class="project-category-tag">Poster</div>
+            <div class="project-year">2026</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/poster-信号接收中-01.jpg" alt="信号接收中">
+            </div>
+          </div>
+        </li>
+
+        <!-- 海报 · 05 植物共同呼吸系列海报 -->
+        <li class="project-item" data-category="poster">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">植物共同呼吸系列海报</div>
+            <div class="project-category-tag">Poster</div>
+            <div class="project-year">2026</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/poster-植物共同呼吸系列海报-01.jpg" alt="植物共同呼吸">
+            </div>
+          </div>
+        </li>
+
+        <!-- 品牌 · 06 aura -->
+        <li class="project-item" data-category="brand">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">aura</div>
+            <div class="project-category-tag">Brand</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/brand-aura-01.jpg" alt="aura">
+            </div>
+          </div>
+        </li>
+
+        <!-- 品牌 · 07 厚作goodwill -->
+        <li class="project-item" data-category="brand">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">厚作 goodwill</div>
+            <div class="project-category-tag">Brand</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/brand-厚作goodwill-01.jpg" alt="厚作">
+            </div>
+          </div>
+        </li>
+
+        <!-- 品牌 · 08 热点商店 -->
+        <li class="project-item" data-category="brand">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">热点商店</div>
+            <div class="project-category-tag">Brand</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/brand-热点商店-01.jpg" alt="热点商店">
+            </div>
+          </div>
+        </li>
+
+        <!-- 品牌 · 09 小角落 -->
+        <li class="project-item" data-category="brand">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">小角落 bean in the nook</div>
+            <div class="project-category-tag">Brand</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/brand-小角落bean in the nook-01.jpg" alt="小角落">
+            </div>
+          </div>
+        </li>
+
+        <!-- 品牌 · 10 映相 -->
+        <li class="project-item" data-category="brand">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">映相</div>
+            <div class="project-category-tag">Brand</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/brand-映相-01.jpg" alt="映相">
+            </div>
+          </div>
+        </li>
+
+        <!-- 品牌 · 11 原麦工坊 -->
+        <li class="project-item" data-category="brand">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">原麦工坊</div>
+            <div class="project-category-tag">Brand</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/brand-原麦工坊-01.jpg" alt="原麦工坊">
+            </div>
+          </div>
+        </li>
+
+        <!-- 应用 · 12 № name -->
+        <li class="project-item" data-category="material">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">№ name</div>
+            <div class="project-category-tag">Material</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/material-№ name-01.jpg" alt="№ name">
+            </div>
+          </div>
+        </li>
+
+        <!-- 应用 · 13 半句再见 -->
+        <li class="project-item" data-category="material">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">半句再见 · 孙燕姿</div>
+            <div class="project-category-tag">Material</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/material-半句再见-孙燕姿-01.jpg" alt="半句再见">
+            </div>
+          </div>
+        </li>
+
+        <!-- 应用 · 14 工号：NO.6 -->
+        <li class="project-item" data-category="material">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">工号：NO.6</div>
+            <div class="project-category-tag">Material</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/material-工号：NO.6-01.jpg" alt="工号NO.6">
+            </div>
+          </div>
+        </li>
+
+        <!-- 应用 · 15 华晨宇创意物料 -->
+        <li class="project-item" data-category="material">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">华晨宇创意物料</div>
+            <div class="project-category-tag">Material</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/material-华晨宇创意物料-01.jpg" alt="华晨宇">
+            </div>
+          </div>
+        </li>
+
+        <!-- 应用 · 16 圣诞物料制作 -->
+        <li class="project-item" data-category="material">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">圣诞物料制作</div>
+            <div class="project-category-tag">Material</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/material-圣诞物料制作-01.jpg" alt="圣诞物料">
+            </div>
+          </div>
+        </li>
+
+        <!-- 字体 · 17 百家烟 -->
+        <li class="project-item" data-category="typeface">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">百家烟</div>
+            <div class="project-category-tag">Typeface</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/typeface-百家烟-01.jpg" alt="百家烟">
+            </div>
+          </div>
+        </li>
+
+        <!-- 字体 · 18 北极光 -->
+        <li class="project-item" data-category="typeface">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">北极光</div>
+            <div class="project-category-tag">Typeface</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/typeface-北极光-01.jpg" alt="北极光">
+            </div>
+          </div>
+        </li>
+
+        <!-- 字体 · 19 发财 -->
+        <li class="project-item" data-category="typeface">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">发财</div>
+            <div class="project-category-tag">Typeface</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/typeface-发财-01.jpg" alt="发财">
+            </div>
+          </div>
+        </li>
+
+        <!-- 字体 · 20 诺亚方舟 -->
+        <li class="project-item" data-category="typeface">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">诺亚方舟</div>
+            <div class="project-category-tag">Typeface</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/typeface-诺亚方舟-01.jpg" alt="诺亚方舟">
+            </div>
+          </div>
+        </li>
+
+        <!-- 字体 · 21 偏方 -->
+        <li class="project-item" data-category="typeface">
+          <div class="inner-content" data-cursor-style="small">
+            <div class="project-title">偏方</div>
+            <div class="project-category-tag">Typeface</div>
+            <div class="project-year">2025</div>
+          </div>
+          <div class="accordion-content">
+            <div class="container-img">
+              <img class="media" src="public/images/portfolio/typeface-偏方-01.png" alt="偏方">
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- ====== INSPIRATION — horizontal scroll ====== -->
+    <section class="inspiration" id="inspiration">
+      <span class="inspiration__label">things that inspire</span>
+
+      <div class="container-thumbs">
+        <ul class="thumbs-list">
+          <li><button class="thumb active" data-scroll-section="#section-type" data-cursor-style="small">
+            <img src="public/images/portfolio/typeface-偏方-01.png" alt="Type">
+          </button></li>
+          <li><button class="thumb" data-scroll-section="#section-space" data-cursor-style="small">
+            <img src="public/images/portfolio/poster-植物共同呼吸系列海报-01.jpg" alt="Space">
+          </button></li>
+          <li><button class="thumb" data-scroll-section="#section-color" data-cursor-style="small">
+            <img src="public/images/portfolio/typeface-北极光-01.jpg" alt="Color">
+          </button></li>
+          <li><button class="thumb" data-scroll-section="#section-texture" data-cursor-style="small">
+            <img src="public/images/portfolio/brand-厚作goodwill-01.jpg" alt="Texture">
+          </button></li>
+        </ul>
+      </div>
+
+      <div class="scroll-content" id="scroll-content">
+        <div class="content-section" id="section-type">
+          <div class="content-slogan split-words">
+            <span class="contrast-text">文字</span>的骨骼
+          </div>
+          <div class="b-hover-gallery">
+            <div class="container-img" style="aspect-ratio:16/9;margin-bottom:var(--space-block);">
+              <img class="media" src="public/images/portfolio/typeface-偏方-01.png" alt="Type">
+              <img class="media" src="public/images/portfolio/typeface-偏方-02.png" alt="Type" style="display:none;">
+            </div>
+          </div>
+          <div class="b-text">
+            <p>每一个笔画都是一次呼吸。字体设计不是造字，而是在黑白之间找到最恰切的张力——笔画粗细、字面结构、空间关系，每一个决定都在无声中塑造阅读的节奏。好的字体让文字自己说话。</p>
+            <p>从篆隶楷行草的传统基因，到当代几何构成的实验探索，Hazel 的字体练习横跨古今。不是复古，也不是前卫——只是在笔画的方寸之间，寻找汉字的无限可能。</p>
+          </div>
+        </div>
+
+        <div class="content-section" id="section-space">
+          <div class="content-slogan split-words">
+            <span class="contrast-text">留白</span>的声音
+          </div>
+          <div class="b-hover-gallery">
+            <div class="container-img" style="aspect-ratio:16/9;margin-bottom:var(--space-block);">
+              <img class="media" src="public/images/portfolio/poster-植物共同呼吸系列海报-01.jpg" alt="Space">
+            </div>
+          </div>
+          <div class="b-text">
+            <p>留白不是"空"，而是主动的呼吸。在海报创作中，没有被填满的空间恰恰承载着最多信息——它引导视线、制造节奏、让主题浮出水面。好的设计在沉默中发出声音。</p>
+            <p>拒绝信息过载，拒绝填满每一寸画布。Hazel 相信版式即节奏——文字与图像之间的空白区域，才是真正的设计发生的地方。少即是多，空即是有。</p>
+          </div>
+        </div>
+
+        <div class="content-section" id="section-color">
+          <div class="content-slogan split-words">
+            <span class="contrast-text">色彩</span>的克制
+          </div>
+          <div class="b-hover-gallery">
+            <div class="container-img" style="aspect-ratio:16/9;margin-bottom:var(--space-block);">
+              <img class="media" src="public/images/portfolio/typeface-北极光-01.jpg" alt="Color">
+            </div>
+          </div>
+          <div class="b-text">
+            <p>一种红色就够了。在信息过载的时代，克制的用色是最有力的声明。Hazel 的设计只使用一种强调色——深血红——用于链接、下划线、和高亮词。其余交给黑白灰的层次。</p>
+            <p>这不是极简主义，而是对视觉噪音的反抗。当整座城市都在尖叫时，轻声说话的人反而被听见。色彩的意义不在于多，而在于精确——用对一处，胜过用满全篇。</p>
+          </div>
+        </div>
+
+        <div class="content-section" id="section-texture">
+          <div class="content-slogan split-words">
+            <span class="contrast-text">材质</span>的温度
+          </div>
+          <div class="b-hover-gallery">
+            <div class="container-img" style="aspect-ratio:16/9;margin-bottom:var(--space-block);">
+              <img class="media" src="public/images/portfolio/brand-厚作goodwill-01.jpg" alt="Texture">
+            </div>
+          </div>
+          <div class="b-text">
+            <p>纸张是有温度的。即使在屏幕上，我们也追求印刷的质感——暖纸底色、噪点纹理、图像像相纸一样被框住。设计不只是视觉的，它是可触摸的体验。</p>
+            <p>从纸张的纤维到墨水渗入的深度，印刷工艺的每一个细节都在诉说材质的力量。Hazel 的作品集本身就是一件排版作品——每一页都是对"设计可以怎样被感知"的探索。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer id="footer">
+    <div class="footer-row">
+      <div>
+        <span class="footer-container-title">Stay up to date</span>
+        <div class="footer-social">
+          <a href="https://behance.net/hazel_847291" target="_blank" rel="noopener" data-cursor-style="small">Behance</a>
+          <a href="https://instagram.com/hazel.port" target="_blank" rel="noopener" data-cursor-style="small">Instagram</a>
+          <a href="https://zcool.com.cn/u/84729156" target="_blank" rel="noopener" data-cursor-style="small">ZCOOL</a>
+        </div>
+      </div>
+      <div>
+        <span class="footer-container-title">Write to</span>
+        <a href="mailto:hazel2530210643@gamil.com" class="footer-email btn-underline" data-cursor-style="small">hazel2530210643@gamil.com</a>
+      </div>
+    </div>
+
+    <!-- SVG wordmark -->
+    <div class="footer-wordmark">
+      <svg viewBox="0 0 1200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 120 L40 40 L90 40 L90 75 L60 75 L60 80 L90 80 L90 120 L80 120 L80 90 L60 90 L60 120 Z" fill="#9B0000"/>
+        <text x="120" y="115" font-family="serif" font-size="120" font-weight="700" fill="#9B0000">HAZEL</text>
+      </svg>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        <span>&copy; 2025 Hazel · Portfolio. All rights reserved.</span>
+        <p class="footer-colophon">本网站本身即是一件排版作品。<br>由三位亚洲设计大师的基因驱动：北川一成的极端比例、高晗的实验冲突、刘治治的几何克制。</p>
+      </div>
+      <button class="btn-back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-cursor-style="small">
+        Back to top ↑
+      </button>
+    </div>
+  </footer>
+
+  <!-- ====== PROJECT DETAIL OVERLAY ====== -->
+  <div class="project-overlay" id="project-overlay" aria-hidden="true">
+    <button class="project-overlay__close" id="project-close" data-cursor-style="small">Close &#x2715;</button>
+    <div class="project-overlay__header">
+      <div class="project-overlay__category" id="project-cat"></div>
+      <div class="project-overlay__title" id="project-title"></div>
+      <p class="project-overlay__desc" id="project-desc"></p>
+    </div>
+    <div class="project-overlay__gallery" id="project-gallery"></div>
+  </div>
+
+  <!-- ====== SETTINGS PANEL ====== -->
+  <button class="settings-btn" id="settings-btn" aria-label="设置" title="设置">
+    &#9881;
+  </button>
+  <div class="settings-panel" id="settings-panel" aria-hidden="true">
+    <div class="settings-panel__title">设置 · Settings</div>
+
+    <div class="settings-panel__group">
+      <span class="settings-panel__label">中文字体 · CN Font</span>
+      <div class="settings-panel__options" id="cn-font-options">
+        <button class="settings-option settings-option--active" data-font-cn="default">Taipei Sans TC 台北黑体</button>
+        <button class="settings-option" data-font-cn="system">System Sans 系统黑体</button>
+        <button class="settings-option" data-font-cn="serif">System Serif 系统宋体</button>
+      </div>
+    </div>
+
+    <div class="settings-panel__group">
+      <span class="settings-panel__label">英文字体 · EN Font</span>
+      <div class="settings-panel__options" id="en-font-options">
+        <button class="settings-option settings-option--active" data-font-en="default">Konatu 小夏等幅</button>
+        <button class="settings-option" data-font-en="system">System Mono 系统等宽</button>
+        <button class="settings-option" data-font-en="sans">System Sans 系统无衬线</button>
+      </div>
+    </div>
+
+    <div class="settings-panel__group">
+      <span class="settings-panel__label">配色方案 · Theme</span>
+      <div class="settings-panel__options" id="theme-options">
+        <button class="settings-option settings-option--active" data-theme="light">
+          <span class="settings-option__swatch" style="background:#FFFFFF;"></span>Light 纯白
+        </button>
+        <button class="settings-option" data-theme="dark">
+          <span class="settings-option__swatch" style="background:#111111;"></span>Dark 暗色
+        </button>
+        <button class="settings-option" data-theme="warm">
+          <span class="settings-option__swatch" style="background:#FFFBF2;"></span>Warm 暖纸
+        </button>
+      </div>
+    </div>
+
+    <button class="settings-panel__reset" id="settings-reset">恢复默认 · Reset</button>
+  </div>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script src="js/hue.js"></script>
+</body>
+</html>
